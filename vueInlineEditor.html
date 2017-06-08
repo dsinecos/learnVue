@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Building an Inline Editor using Vue.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+</head>
+
+<body>
+
+    <div id="inlineEditor" v-cloak v-on:click="hideToolTip">
+
+        <!--
+            <p v-on:click.stop="toggleToolTip">{{text_content}}</p>
+            -->
+        <button type="button" v-on:click.stop="toggleToolTip">{{text_content}}</button>
+
+        <div class="tooltip" v-on:click.stop v-if="show_tooltip">
+
+            <input type="text" v-model="text_content">
+            <button type="button" v-on:click.stop="toggleToolTip">Done</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        var inlineEditor = new Vue({
+            el: "#inlineEditor",
+
+            data: {
+                show_tooltip: false,
+                text_content: "Edit me"
+            },
+
+            methods: {
+                hideToolTip: function () {
+                    this.show_tooltip = false;
+                },
+                toggleToolTip: function () {
+                    this.show_tooltip = !this.show_tooltip;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
