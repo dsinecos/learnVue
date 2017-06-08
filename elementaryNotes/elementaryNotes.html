@@ -10,14 +10,14 @@
 <body>
 
     <div id="searchAndCreateBar">
-        <input type="text" v-model="searchAndCreateBar" v-on:keyup.enter="addNote(searchAndCreateBar)">
+        <label>Search & Create <input type="text" v-model="searchAndCreateBar" v-on:keyup.enter="addNote(searchAndCreateBar)"></label>
         <p>Your search query : <span>{{searchAndCreateBar}}</span></p>
     </div>
 
     <div id="notesList">
         <ol>
             <li v-for="item in filteredNotes">
-                <p>{{item.title}} <button>Delete</button></p>
+                <p>{{item.title}} <button>Delete</button><button>Edit</button></p>
                 <p>{{item.text}}</p>
             </li>
         </ol>
@@ -26,8 +26,8 @@
     <script>
         var notesData = [
             {
-                title: "Hockey",
-                text: "Text for Note 1"
+                title: "How to add Notes?",
+                text: "Add notes by typing the title in the search bar and pressing enter"
             },
             {
                 title: "Swimming",
@@ -61,7 +61,9 @@
             methods: {
                 addNote: function (noteTitle) {
                     notesData.push({ title: noteTitle, text: "" });
-                    filteredNotesData.push({ title: noteTitle, text: "" })
+                    //filteredNotesData.push({ title: noteTitle, text: "" })
+                    //console.log(notesList.filteredNotes());
+                    //console.log(notesList.testData);
                 }
             }
         });
@@ -69,7 +71,7 @@
         var notesList = new Vue({
             el: "#notesList",
             data: {
-
+                testData: "testData"
             },
             computed: {
                 filteredNotes: function () {
