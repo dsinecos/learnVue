@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Elementary Notes App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+</head>
+
+<body>
+
+    <div id="searchAndCreateBar">
+        <input type="text" v-model="searchAndCreateBar" v-on:keyup.enter="addNote(searchAndCreateBar)">
+        <p>Your search query : <span>{{searchAndCreateBar}}</span></p>
+    </div>
+
+    <div id="notesList">
+        <ol>
+            <li v-for="item in filteredNotes">
+                <p>{{item.title}} <button>Delete</button></p>
+                <p>{{item.text}}</p>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        var notesData = [
+            {
+                title: "Hockey",
+                text: "Text for Note 1"
+            },
+            {
+                title: "Swimming",
+                text: "Text for Note 2"
+            },
+            {
+                title: "Football",
+                text: "Text for Note 3"
+            },
+            {
+                title: "Cricket",
+                text: "Text for Note 4"
+            },
+            {
+                title: "Karate",
+                text: "Text for Note 5"
+            },
+            {
+                title: "Poker",
+                text: "Text for Note 6"
+            }
+        ];
+
+        var filteredNotesData = [];
+
+        var searchAndCreateBar = new Vue({
+            el: "#searchAndCreateBar",
+            data: {
+                searchAndCreateBar: "",
+            },
+            methods: {
+                addNote: function (noteTitle) {
+                    notesData.push({ title: noteTitle, text: "" });
+                    filteredNotesData.push({ title: noteTitle, text: "" })
+                }
+            }
+        });
+
+        var notesList = new Vue({
+            el: "#notesList",
+            data: {
+
+            },
+            computed: {
+                filteredNotes: function () {
+                    var searchString = searchAndCreateBar.searchAndCreateBar;
+                    //console.log(searchString);
+                    //console.log(typeof searchString);
+                    //console.log(Boolean(!searchString));
+
+                    if (searchString) {
+                        console.log("This is the search string " + searchString);
+                        filteredNotesData = [];
+                        for (var i = 0; i < notesData.length; i++) {
+                            if (notesData[i].title.indexOf(searchString) !== -1) {
+                                filteredNotesData.push(notesData[i]);
+                            }
+                        }
+
+                        return filteredNotesData;
+
+                    } else {
+                        return notesData;
+                    }
+
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
