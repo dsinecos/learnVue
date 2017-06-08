@@ -22,7 +22,25 @@
 
     </div>
 
+    <div v-if="active" id="testhover">
+        <h2>Hello World!</h2>
+
+        <div v-on:mouseover="active = !active">
+            <h1>Hover me!</h1>
+        </div>
+    </div>
+
+
+
     <script>
+        var testHover = new Vue({
+            el: "#testhover",
+
+            data: {
+                active: true
+            }
+        });
+
         var demo = new Vue({
 
             el: '#navbar',
