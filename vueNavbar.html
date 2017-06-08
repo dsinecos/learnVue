@@ -21,11 +21,19 @@
         <p>You chose <b>{{active}}</b></p>
 
     </div>
+<!--
+    <div v-show="active" id="testhover">
+        <h2>Hello World!</h2>
 
+        <div v-on:mouseover="active = !active" v-on:mouseleave="active = true">
+            <h1>Hover me!</h1>
+        </div>
+    </div>
+-->
     <div v-if="active" id="testhover">
         <h2>Hello World!</h2>
 
-        <div v-on:mouseover="active = !active">
+        <div v-on:mouseover="active = !active" v-on:mouseleave="active = true">
             <h1>Hover me!</h1>
         </div>
     </div>
