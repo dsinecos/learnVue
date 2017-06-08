@@ -16,10 +16,10 @@
             -->
         <button type="button" v-on:click.stop="toggleToolTip">{{text_content}}</button>
 
-        <div class="tooltip" v-on:click.stop v-if="show_tooltip">
+        <div class="tooltip" v-on:click v-if="show_tooltip">
 
             <input type="text" v-model="text_content">
-            <button type="button" v-on:click.stop="toggleToolTip">Done</button>
+            <button type="button" v-on:click="changeContent">Done</button>
 
         </div>
 
@@ -40,6 +40,9 @@
                 },
                 toggleToolTip: function () {
                     this.show_tooltip = !this.show_tooltip;
+                },
+                changeContent: function() {
+                    this.text_content = "Understanding event propagation";
                 }
             }
         })
