@@ -3,28 +3,27 @@
 <html>
 
 <head>
-    <title>Elementary Notes App</title>
+    <title>Learning Vuejs by building a notes app</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
 </head>
 
 <body>
+    <div id="searchNote">
+        <label>Search or Create Note <input type="text" v-model="searchString" v-on:keyup.enter="addNote"></input></label>
 
-    <div id="searchAndCreateBar">
-        <label>Search & Create <input type="text" v-model="searchAndCreateBar" v-on:keyup.enter="addNote(searchAndCreateBar)"></label>
-        <p>Your search query : <span>{{searchAndCreateBar}}</span></p>
-    </div>
-
-    <div id="notesList">
         <ol>
             <li v-for="item in filteredNotes">
-                <p>{{item.title}} <button>Delete</button><button>Edit</button></p>
+                <p>{{item.title}} <button v-on:click="editNoteTitle">Edit</button><button>Delete</button></p>
                 <p>{{item.text}}</p>
             </li>
         </ol>
+
     </div>
 
     <script>
-        var notesData = [
+        //TODO - How to split the search bar and the notes display section into different html components with separate IDs?
+        //TODO - How to ensure that when the user presses enter to create a note that note also shows up in the search results?
+        var notes = [
             {
                 title: "How to add Notes?",
                 text: "Add notes by typing the title in the search bar and pressing enter"
@@ -51,51 +50,41 @@
             }
         ];
 
-        var filteredNotesData = [];
 
-        var searchAndCreateBar = new Vue({
-            el: "#searchAndCreateBar",
+        var searchNote = new Vue({
+            el: "#searchNote",
             data: {
-                searchAndCreateBar: "",
+                searchString: ""
             },
             methods: {
-                addNote: function (noteTitle) {
-                    notesData.push({ title: noteTitle, text: "" });
-                    //filteredNotesData.push({ title: noteTitle, text: "" })
-                    //console.log(notesList.filteredNotes());
-                    //console.log(notesList.testData);
-                }
-            }
-        });
+                addNote: function() {
+                    var noteTitle = this.searchString;
+                    notes.push({ title: noteTitle, text: "" });
+                },
+                editNoteTitle: function() {
 
-        var notesList = new Vue({
-            el: "#notesList",
-            data: {
-                testData: "testData"
+                }
             },
             computed: {
                 filteredNotes: function () {
-                    var searchString = searchAndCreateBar.searchAndCreateBar;
-                    //console.log(searchString);
-                    //console.log(typeof searchString);
-                    //console.log(Boolean(!searchString));
-
+                    var searchString = this.searchString.toLowerCase();
+                    
                     if (searchString) {
-                        console.log("This is the search string " + searchString);
-                        filteredNotesData = [];
-                        for (var i = 0; i < notesData.length; i++) {
-                            if (notesData[i].title.indexOf(searchString) !== -1) {
-                                filteredNotesData.push(notesData[i]);
+                        
+                        //console.log(searchString);
+                        var notesFilteredBySearchString = [];
+                        
+                        for(var i=0; i < notes.length; i++){
+                            var notesTitle = notes[i].title.toLowerCase();
+                            if(notesTitle.indexOf(searchString) !== -1) {
+                                notesFilteredBySearchString.push(notes[i]);
                             }
                         }
 
-                        return filteredNotesData;
-
+                        return notesFilteredBySearchString;
                     } else {
-                        return notesData;
+                        return notes;
                     }
-
-
                 }
             }
         });
