@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Learn XMLHttpRequest</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+    <div id="id01" class="modal">
+        <form action="http://localhost:2346/login" method="POST">
+
+            <div class="container">
+                <label><b>Username </b></label>
+                <input type="text" placeholder="Username" name="username" required>
+                <br>
+                <label><b>Password </b></label>
+                <input type="password" placeholder="Password" name="password" required>
+
+                <button type="submit">Login</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div>
+        <form action="http://localhost:2346/signup" method="POST">
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Username" name="username" required>
+                <br>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Password" name="password" required>
+
+                <button type="submit">Signup</button>
+            </div>
+
+        </form>
+    </div>
+
+
+    <script>
+        /*
+        var httpRequest = new XMLHttpRequest();
+        var userCredential = "username=Shaktiman&password=Shaktiman";
+        httpRequest.withCredentials = true;
+        httpRequest.open("POST", "http://localhost:2346/");
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        httpRequest.onload = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(httpRequest.response);
+            }
+        }
+
+        httpRequest.send(userCredential);
+        */
+    </script>
+
+</body>
+
+<script>    
+/*
+1. Create a Navbar - Login | Signup | About
+2. Create 3 sections on the webpage
+3. Section 1 - Habits/ Category (Similar to how Trello Displays boards and the same responsive nature)
+    - Each Habit will be a button - With options to Delete and Edit on mouseover
+    - When Edit is pressed the button will turn into a text bar that can be edited to provide the new Category name or the new Label name
+    - When Delete is pressed a confirmation is asked for and the button is removed
+    - An Add Category button will exist which will have a lighter shade than the rest of the Category buttons similar to how it is in case of Trello Board
+    - These buttons can all be dragged and dropped into the next section
+4. Section 2 - This section will allow the user to review their day and track their reviews over the defined duration
+5. Section 3 - This section will provide the journal for everyday and will expand using the infinite scroll
+
+
+*/
+
+</script>
+
+</html>
