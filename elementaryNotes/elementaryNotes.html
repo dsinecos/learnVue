@@ -13,7 +13,11 @@
 
         <ol>
             <li v-for="item in filteredNotes">
-                <p>{{item.title}} <button v-on:click="editNoteTitle">Edit</button><button>Delete</button></p>
+
+                <p v-if="!item.titleEditableMode" v-on:click="toggleNoteTitleEditMode(item)">{{item.title}} <button v-on:click="toggleNoteTitleEditMode(item)">Edit</button><button>Delete</button></p>
+
+                <input type="text" v-if="item.titleEditableMode" v-model="item.title" v-on:keyup.enter="toggleNoteTitleEditMode(item)">
+
                 <p>{{item.text}}</p>
             </li>
         </ol>
@@ -26,26 +30,32 @@
         var notes = [
             {
                 title: "How to add Notes?",
+                titleEditableMode: false,
                 text: "Add notes by typing the title in the search bar and pressing enter"
             },
             {
                 title: "Swimming",
+                titleEditableMode: false,
                 text: "Text for Note 2"
             },
             {
                 title: "Football",
+                titleEditableMode: false,
                 text: "Text for Note 3"
             },
             {
                 title: "Cricket",
+                titleEditableMode: false,
                 text: "Text for Note 4"
             },
             {
                 title: "Karate",
+                titleEditableMode: false,
                 text: "Text for Note 5"
             },
             {
                 title: "Poker",
+                titleEditableMode: false,
                 text: "Text for Note 6"
             }
         ];
@@ -54,6 +64,7 @@
         var searchNote = new Vue({
             el: "#searchNote",
             data: {
+                titleEditableMode: false, 
                 searchString: ""
             },
             methods: {
@@ -61,8 +72,11 @@
                     var noteTitle = this.searchString;
                     notes.push({ title: noteTitle, text: "" });
                 },
-                editNoteTitle: function() {
-
+                toggleNoteTitleEditMode: function(item) {
+                    console.log("Inside toggle edit mode for title");
+                    console.log(item.titleEditableMode);
+                    item.titleEditableMode = !item.titleEditableMode;
+                    console.log(item.titleEditableMode);
                 }
             },
             computed: {
