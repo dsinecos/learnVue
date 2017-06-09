@@ -16,6 +16,7 @@
         <p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }} <span v-on:mousemove="stopEventBubbling">DEAD SPOT</span></p>
         <p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }} <span v-on:mousemove.stop="">DEAD SPOT</span></p>
         <p v-on:dblclick="keyPressCounter">Key press counter {{ keyPressCount }}</p>
+        <input type="text" v-on:keyup.enter.space="alertUser">
 
     </div>
 
@@ -49,6 +50,9 @@
                 },
                 stopEventBubbling: function (event) {
                     event.stopPropagation();
+                },
+                alertUser: function() {
+                    alert("You pressed spacebar or enter")
                 }
             }
         });
