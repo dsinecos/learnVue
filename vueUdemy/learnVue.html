@@ -9,7 +9,7 @@
     <body>
         <div id="learnVue">
             <input type="text" v-on:input="changeTitle">
-            <p>{{ title }} <a href="{{ link }}">Google</a></p>
+            <p>{{ title }} <a v-bind:href="link">Google</a></p>
         </div>
 
         <script>
