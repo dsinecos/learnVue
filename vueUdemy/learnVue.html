@@ -9,14 +9,15 @@
     <body>
         <div id="learnVue">
             <input type="text" v-on:input="changeTitle">
-            <p>{{ title }}</p>
+            <p>{{ title }} <a href="{{ link }}">Google</a></p>
         </div>
 
         <script>
             new Vue({
                 el: "#learnVue",
                 data: {
-                    title: "Hello World!"
+                    title: "Hello World!",
+                    link: "http://google.com"
                 },
                 methods: {
                     changeTitle: function() {
