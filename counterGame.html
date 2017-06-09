@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Learn Vue.js</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="counterGame">
+        <button v-on:click="targetSum">Start/Reset</button>
+        <p>Get a sum of {{ target }}</p>
+
+        <button v-on:click="addNum(1)">Add 1</button>
+        <button v-on:click="addNum(3)">Add 3</button>
+        <button v-on:click="addNum(5)">Add 5</button>
+        <button v-on:click="addNum(7)">Add 7</button>
+        
+        <br>
+        
+        <button v-on:click="subtractNum(1)">Subtract 1</button>
+        <button v-on:click="subtractNum(3)">Subtract 3</button>
+        <button v-on:click="subtractNum(5)">Subtract 5</button>
+        <button v-on:click="subtractNum(7)">Subtract 7</button>
+        
+        <p>1 * {{ num1 }} + 3 * {{ num3 }} + 5 * {{ num5 }} + 7 * {{ num7 }} = {{ total }}</p>
+        <p>You need to {{ direction }}</p>
+        <!--<p>1 * <span>{{ num1 }}</span> + 3 * <span>{{ num3 }}</span> + 5 * <span>{{ num 5 }}</span> + 7 * <span>{{ num7 }}</span> = <span>{{ total() }}</span></p>-->
+    </div>
+
+    <script>
+        new Vue({
+            el: "#counterGame",
+            data: {
+                num1: 0,
+                num3: 0,
+                num5: 0,
+                num7: 0,
+                total: 0,
+                target: 0,
+                direction: ""
+            },
+            methods: {
+                addNum: function (num) {
+                    this.total += num;
+                    switch (num) {
+                        case 1:
+                            this.num1++;
+                            break;
+                        case 3:
+                            this.num3++;
+                            break;
+                        case 5:
+                            this.num5++;
+                            break;
+                        case 7:
+                            this.num7++;
+                            break;
+                    }
+                    console.log("Inside addNum");
+                    console.log(this.total);
+                    console.log(this.target);
+                    if (this.total === this.target) {
+                        this.direction = "do nothing";
+                        alert("You've won");
+                    } else if (this.total < this.target) {
+                        this.direction = "add numbers";
+                    } else if (this.total > this.target) {
+                        this.direction = "subtract numbers";
+                    }
+                },
+                subtractNum: function (num) {
+                    if (this.total === 0) {
+                        alert("You can't subtract from zero");
+                    } else {
+                        this.total -= num;
+                        switch (num) {
+                            case 1:
+                                this.num1--;
+                                break;
+                            case 3:
+                                this.num3--;
+                                break;
+                            case 5:
+                                this.num5--;
+                                break;
+                            case 7:
+                                this.num7--;
+                                break;
+                        }
+                        console.log("Inside subtractNum");
+                        console.log(this.total);
+                        console.log(this.target);
+                        if (this.total === this.target) {
+                            this.direction = "do nothing";
+                            alert("You've won");
+                        } else if (this.total < this.target) {
+                            this.direction = "add numbers";
+                        } else if (this.total > this.target) {
+                            this.direction = "subtract numbers";
+                        }
+
+                    }
+
+                },
+                targetSum: function () {
+                    this.target = Math.random().toFixed(2) * 100;
+                    this.num1 = 0;
+                    this.num3 = 0;
+                    this.num5 = 0;
+                    this.num7 = 0;
+                    this.direction = "";
+                    this.total = 0;
+                    return this.target;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
