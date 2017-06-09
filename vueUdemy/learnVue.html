@@ -11,6 +11,8 @@
             <h1 v-once>{{ title }}</h1>
             <input type="text" v-on:input="changeTitle">
             <p>{{ title }} <a v-bind:href="link">Google</a></p>
+            <h1 v-html="htmlData"></h1>
+            <h1>Hoye Hoye Hoye</h1>
         </div>
 
         <script>
@@ -18,7 +20,8 @@
                 el: "#learnVue",
                 data: {
                     title: "Hello World!",
-                    link: "http://google.com"
+                    link: "http://google.com",
+                    htmlData: "<p>Testing rendering Raw HTML from Vue.js</p>"
                 },
                 methods: {
                     changeTitle: function() {
