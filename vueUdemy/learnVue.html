@@ -8,28 +8,22 @@
 
     <body>
         <div id="learnVue">
-            <h1 v-once>{{ title }}</h1>
-            <input type="text" v-on:input="changeTitle">
-            <p>{{ title }} <a v-bind:href="link">Google</a></p>
-            <h1 v-html="htmlData"></h1>
-            <h1>Hoye Hoye Hoye</h1>
+            <button v-on:click="incrementCounter">Click me</button>
+            <p>{{ counter }}</p>
+            
         </div>
 
         <script>
             new Vue({
                 el: "#learnVue",
                 data: {
-                    title: "Hello World!",
-                    link: "http://google.com",
-                    htmlData: "<p>Testing rendering Raw HTML from Vue.js</p>"
+                    counter: 0                    
                 },
                 methods: {
-                    changeTitle: function() {
-                        this.title = event.target.value;
-                        //console.log(event);
-                        //console.log(event.target);
-                        //console.log(event.target.value);
+                    incrementCounter: function() {
+                        this.counter++;
                     }
+                    
                 }
             });
         </script>
