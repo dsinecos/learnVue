@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 
-<html>  
-    <head>
-        <title>Learning Vue.js</title>
-        <script src="https://unpkg.com/vue"></script>
-    </head>
+<html>
 
-    <body>
-        <div id="learnVue">
-            <button v-on:click="incrementCounter">Click me</button>
-            <p>{{ counter }}</p>
-            
-        </div>
+<head>
+    <title>Learning Vue.js</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
 
-        <script>
-            new Vue({
-                el: "#learnVue",
-                data: {
-                    counter: 0                    
+<body>
+    <div id="learnVue">
+        <button v-on:click="incrementCounter">Click me</button>
+        <p>{{ counter }}</p>
+        <p v-on:mousemove="updateXCoordinate">X Co-ordinate {{ xCood }}</p>
+        <p v-on:mousemove="updateYCoordinate">Y Co-ordinate {{ yCood }}</p>
+        <!--<p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }}</p>-->
+        <p v-on:dblclick="keyPressCounter">Key press counter {{ keyPressCount }}</p>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#learnVue",
+            data: {
+                counter: 0,
+                xCood: 0,
+                yCood: 0,
+                keyPressCount: 0
+            },
+            methods: {
+                incrementCounter: function () {
+                    this.counter++;
                 },
-                methods: {
-                    incrementCounter: function() {
-                        this.counter++;
-                    }
-                    
+                
+                updateXCoordinate: function (event) {
+                    this.xCood = event.clientX;
+                },
+                updateYCoordinate: function (event) {
+                    this.yCood = event.clientY;
+                },
+                /*
+                updateCoordinates: function (event) {
+                    this.xCood = event.clientX;
+                    this.yCood = event.clientY;
                 }
-            });
-        </script>
-    </body>
+                */
+                keyPressCounter: function(event) {
+                    console.log(event);
+                    this.keyPressCount++;
+                }
+            }
+        });
+    </script>
+</body>
+
 </html>
