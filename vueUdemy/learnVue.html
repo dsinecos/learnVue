@@ -11,9 +11,10 @@
     <div id="learnVue">
         <button v-on:click="incrementCounter(3, $event)">Click me</button>
         <p>{{ counter }}</p>
-        <p v-on:mousemove="updateXCoordinate">X Co-ordinate {{ xCood }}</p>
-        <p v-on:mousemove="updateYCoordinate">Y Co-ordinate {{ yCood }}</p>
-        <!--<p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }}</p>-->
+        <!--<p v-on:mousemove="updateXCoordinate">X Co-ordinate {{ xCood }}</p>
+        <p v-on:mousemove="updateYCoordinate">Y Co-ordinate {{ yCood }}</p>-->
+        <p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }} <span v-on:mousemove="stopEventBubbling">DEAD SPOT</span></p>
+        <p v-on:mousemove="updateCoordinates">X,Y {{ xCood }}, {{ yCood }} <span v-on:mousemove.stop="">DEAD SPOT</span></p>
         <p v-on:dblclick="keyPressCounter">Key press counter {{ keyPressCount }}</p>
 
     </div>
@@ -32,22 +33,22 @@
                     console.log(event.target);
                     this.counter += 3;
                 },
-                
                 updateXCoordinate: function (event) {
                     this.xCood = event.clientX;
                 },
                 updateYCoordinate: function (event) {
                     this.yCood = event.clientY;
                 },
-                /*
                 updateCoordinates: function (event) {
                     this.xCood = event.clientX;
                     this.yCood = event.clientY;
-                }
-                */
-                keyPressCounter: function(event) {
+                },
+                keyPressCounter: function (event) {
                     console.log(event);
                     this.keyPressCount++;
+                },
+                stopEventBubbling: function (event) {
+                    event.stopPropagation();
                 }
             }
         });
