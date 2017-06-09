@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>  
+    <head>
+        <title>Learning Vue.js</title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+
+    <body>
+        <div id="learnVue">
+            <input type="text" v-on:input="changeTitle">
+            <p>{{ title }}</p>
+        </div>
+
+        <script>
+            new Vue({
+                el: "#learnVue",
+                data: {
+                    title: "Hello World!"
+                },
+                methods: {
+                    changeTitle: function() {
+                        this.title = event.target.value;
+                        //console.log(event);
+                        //console.log(event.target);
+                        //console.log(event.target.value);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
