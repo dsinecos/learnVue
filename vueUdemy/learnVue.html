@@ -9,7 +9,7 @@
 
 <body>
     <div id="learnVue">
-        <button v-on:click="incrementCounter">Click me</button>
+        <button v-on:click="incrementCounter(3, $event)">Click me</button>
         <p>{{ counter }}</p>
         <p v-on:mousemove="updateXCoordinate">X Co-ordinate {{ xCood }}</p>
         <p v-on:mousemove="updateYCoordinate">Y Co-ordinate {{ yCood }}</p>
@@ -28,8 +28,9 @@
                 keyPressCount: 0
             },
             methods: {
-                incrementCounter: function () {
-                    this.counter++;
+                incrementCounter: function (step, event) {
+                    console.log(event.target);
+                    this.counter += 3;
                 },
                 
                 updateXCoordinate: function (event) {
