@@ -8,11 +8,38 @@
 </head>
 
 <body>
+
     <div id="learnVue">
-        <div class="demo" @click="attachRed = !attachRed" :class="{ red: attachRed }"></div>
-        <div class="demo" @click="attachGreen = !attachGreen" :class="{ green: attachGreen }"></div>
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+        <div class="demo" @click="attachGreen = !attachGreen" :class="{ green: attachGreen, blue: !attachGreen }"></div>
         <div class="demo" @click="attachBlue = !attachBlue" :class="{ blue: attachBlue }"></div>
     </div>
+
+    <script>
+        new Vue({
+            el: "#learnVue",
+            data: {
+                attachRed: false,
+                attachGreen: false,
+                attachBlue: false
+            },
+            methods: {
+
+
+            },
+            computed: {
+                divClasses: function() {
+                    return {
+                        red: this.attachRed,
+                        green: !this.attachRed
+                    };
+                }
+            },
+            watch: {
+
+            }
+        });
+    </script>
 
     <style>
         .demo {
@@ -36,26 +63,6 @@
         }
     </style>
 
-    <script>
-        new Vue({
-            el: "#learnVue",
-            data: {
-                attachRed: false,
-                attachGreen: false,
-                attachBlue: false
-            },
-            methods: {
-
-
-            },
-            computed: {
-
-            },
-            watch: {
-
-            }
-        });
-    </script>
 </body>
 
 </html>
