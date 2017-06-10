@@ -9,46 +9,50 @@
 
 <body>
     <div id="learnVue">
-
-        <button @click="counter++">Increase</button>
-        <button @click="counter--">Decrease</button>
-        <button @click="secondCounter++">Second Counter Increase</button>
-        <p>Counter: {{ counter }} | {{ secondCounter }}</p>
-        <p>Result: {{ result() }} | {{ output }}</p>
-
-        <p>Second Counter: {{ secondCounter }}</p>
-
-
+        <div class="demo" @click="attachRed = !attachRed" :class="{ red: attachRed }"></div>
+        <div class="demo" @click="attachGreen = !attachGreen" :class="{ green: attachGreen }"></div>
+        <div class="demo" @click="attachBlue = !attachBlue" :class="{ blue: attachBlue }"></div>
     </div>
+
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
 
     <script>
         new Vue({
             el: "#learnVue",
             data: {
-                counter: 0,
-                secondCounter: 0
+                attachRed: false,
+                attachGreen: false,
+                attachBlue: false
             },
             methods: {
-                result: function () {
-                    console.log("Method executed");
-                    return this.counter > 5 ? "Greater than 5" : "Smaller than 5";
-                }
+
 
             },
             computed: {
-                output: function() {
-                    console.log("Computed property executed");
-                    return this.counter > 5 ? "Greater than 5" : "Smaller than 5"
-                }
+
             },
             watch: {
-                counter: function() {
-                    var vm = this;
-                    setTimeout(function() {
-                        console.log("Watch called");
-                        vm.counter = 0;
-                    }, 2000)
-                }
+
             }
         });
     </script>
