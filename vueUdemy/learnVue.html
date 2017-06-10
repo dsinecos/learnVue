@@ -10,9 +10,9 @@
 <body>
     <div id="learnVue">
 
-        <button v-on:click="counter++">Increase</button>
-        <button v-on:click="counter--">Decrease</button>
-        <button v-on:click="secondCounter++">Second Counter Increase</button>
+        <button @click="counter++">Increase</button>
+        <button @click="counter--">Decrease</button>
+        <button @click="secondCounter++">Second Counter Increase</button>
         <p>Counter: {{ counter }} | {{ secondCounter }}</p>
         <p>Result: {{ result() }} | {{ output }}</p>
 
