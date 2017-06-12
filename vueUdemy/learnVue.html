@@ -10,41 +10,25 @@
 <body>
 
     <div id="learnVue">
-        <div class="demo" @click="attachRed = !attachRed" :class="divClasses" :style="[myStyle, {height: width + 'px'}]"></div>
-        <div class="demo" @click="attachGreen = !attachGreen" :class="{ green: attachGreen, blue: !attachGreen }"></div>
-        <div class="demo" @click="attachBlue = !attachBlue" :class="[color, { blue: attachBlue }]"></div>
-
-        <input type="text" v-model="color">
-        <input type="text" v-model="width">
+        <button @click="show = !show">Switch</button>
+        <p v-if="show">Now you see me</p>
+        <p v-else>Do you see me now?</p>
+        <p>Now you see me too</p>
+        
     </div>
 
     <script>
         new Vue({
             el: "#learnVue",
             data: {
-                attachRed: false,
-                attachGreen: false,
-                attachBlue: false,
-                color: "",
-                width: 100
+                show: true               
             },
             methods: {
 
 
             },
             computed: {
-                divClasses: function() {
-                    return {
-                        red: this.attachRed,
-                        green: !this.attachRed
-                    };
-                },
-                myStyle: function() {
-                    return {
-                        backgroundColor: this.color,
-                        width: this.width + 'px'
-                    }
-                }
+               
             },
             watch: {
 
@@ -53,25 +37,7 @@
     </script>
 
     <style>
-        .demo {
-            width: 100px;
-            height: 100px;
-            background-color: gray;
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .red {
-            background-color: red;
-        }
-
-        .green {
-            background-color: green;
-        }
-
-        .blue {
-            background-color: blue;
-        }
+       
     </style>
 
 </body>
