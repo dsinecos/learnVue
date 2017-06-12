@@ -10,7 +10,7 @@
 <body>
 
     <div id="learnVue">
-        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses" :style="{backgroundColor: color}"></div>
         <div class="demo" @click="attachGreen = !attachGreen" :class="{ green: attachGreen, blue: !attachGreen }"></div>
         <div class="demo" @click="attachBlue = !attachBlue" :class="[color, { blue: attachBlue }]"></div>
 
