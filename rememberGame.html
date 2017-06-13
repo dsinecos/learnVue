@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Learn Vue.js</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="rememberGame">
+
+        <div class="card" :class="colorClass[0]"></div>
+        <div class="card" :class="colorClass[1]"></div>
+        <div class="card" :class="colorClass[2]"></div>
+        <div class="card" :class="colorClass[3]"></div>
+        <div class="card" :class="colorClass[4]"></div>
+        <div class="card" :class="colorClass[5]"></div>
+        <div class="card" :class="colorClass[6]"></div>
+        <div class="card" :class="colorClass[7]"></div>
+        <div class="card" :class="colorClass[8]"></div>
+        <div class="card" :class="colorClass[9]"></div>
+
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+
+        <button @click="testArray = [!testArray[0], !testArray[1]]">Switch</button>
+        <p v-if="testArray[0]">Does this show?</p>
+        <p v-if="testArray[1]">This should not show?</p>
+        <br>
+        <br>
+        <button @click="testObject = {truthy: !testObject.truthy, falsy: !testObject.falsy}">Switch</button>
+        <p v-if="testObject.truthy">Does this show?</p>
+        <p v-if="testObject.falsy">This should not show?</p>
+    </div>
+
+
+    <style>
+        .card {
+            background-color: gray;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        body {
+            background-color: bisque;
+        }
+
+        .test {
+            background-color: salmon;
+            background-color: seagreen;
+            background-color: sienna;
+            background-color: brown;
+            background-color: tan;
+
+            background-color: red;
+            background-color: yellow;
+            background-color: purple;
+            background-color: lawngreen;
+            background-color: crimson;
+        }
+
+        .redBg {
+            background-color: red;
+        }
+
+        .greenBg {
+            background-color: green;
+        }
+    </style>
+
+    <script>
+        // How to allot colors to all the cards - Fix color corresponding to each ID in an object?
+        // How to allot IDs to all the colors - Create random numbers between 1 to 10 and store them in an array such that it has all the numbers from 1 to 10 in a random fashion? Create an object such that there is a color assigned to each ID.
+        // How to allot colors to all the cards?
+        // How to store the color-value of card clicked just now and the card clicked last?
+        // How to flip the earlier card when another card is clicked?
+        // How to count score? (Define score as a fraction of clicks. Minimum clicks required is n for n cards on the table)
+        // How to reset the game?
+
+
+
+        new Vue({
+            el: "#rememberGame",
+            data: {
+                testArray: [true, false],
+                testObject: {
+                    truthy: true,
+                    falsy: false
+                },
+                colorClass: ["redBg", "greenBg"]
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>
