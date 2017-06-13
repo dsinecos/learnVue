@@ -11,7 +11,7 @@
 
     <div id="learnVue">
         <ul>
-            <li v-for="ingredient in ingredients">{{ ingredient }} Ingredient</li>
+            <li v-for="(ingredient, i) in ingredients">{{ ingredient }} Ingredient ( {{ i }})</li>
         </ul>
         
     </div>
