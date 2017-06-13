@@ -10,27 +10,27 @@
 <body>
     <div id="rememberGame">
 
-        <div class="card" :class="colorClass[0]"></div>
-        <div class="card" :class="colorClass[1]"></div>
-        <div class="card" :class="colorClass[2]"></div>
-        <div class="card" :class="colorClass[3]"></div>
-        <div class="card" :class="colorClass[4]"></div>
-        <div class="card" :class="colorClass[5]"></div>
-        <div class="card" :class="colorClass[6]"></div>
-        <div class="card" :class="colorClass[7]"></div>
-        <div class="card" :class="colorClass[8]"></div>
-        <div class="card" :class="colorClass[9]"></div>
+        <div class="card" :style="{'background-color': colorClass[0]}"></div>
+        <div class="card" :style="{'background-color': colorClass[1]}"></div>
+        <div class="card" :style="{'background-color': colorClass[2]}"></div>
+        <div class="card" :style="{'background-color': colorClass[3]}"></div>
+        <div class="card" :style="{'background-color': colorClass[4]}"></div>
+        <div class="card" :style="{'background-color': colorClass[5]}"></div>
+        <div class="card" :style="{'background-color': colorClass[6]}"></div>
+        <div class="card" :style="{'background-color': colorClass[7]}"></div>
+        <div class="card" :style="{'background-color': colorClass[8]}"></div>
+        <div class="card" :style="{'background-color': colorClass[9]}"></div>
 
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card" :style="{'background-color': colorClass[10]}"></div>
+        <div class="card" :style="{'background-color': colorClass[11]}"></div>
+        <div class="card" :style="{'background-color': colorClass[12]}"></div>
+        <div class="card" :style="{'background-color': colorClass[13]}"></div>
+        <div class="card" :style="{'background-color': colorClass[14]}"></div>
+        <div class="card" :style="{'background-color': colorClass[15]}"></div>
+        <div class="card" :style="{'background-color': colorClass[16]}"></div>
+        <div class="card" :style="{'background-color': colorClass[17]}"></div>
+        <div class="card" :style="{'background-color': colorClass[18]}"></div>
+        <div class="card" :style="{'background-color': colorClass[19]}"></div>
 
         <button @click="testArray = [!testArray[0], !testArray[1]]">Switch</button>
         <p v-if="testArray[0]">Does this show?</p>
@@ -77,6 +77,10 @@
         .greenBg {
             background-color: green;
         }
+
+        .blueBg {
+            background-color: blue;
+        }
     </style>
 
     <script>
@@ -84,9 +88,87 @@
         // How to allot IDs to all the colors - Create random numbers between 1 to 10 and store them in an array such that it has all the numbers from 1 to 10 in a random fashion? Create an object such that there is a color assigned to each ID.
         // How to allot colors to all the cards?
         // How to store the color-value of card clicked just now and the card clicked last?
+
         // How to flip the earlier card when another card is clicked?
+
         // How to count score? (Define score as a fraction of clicks. Minimum clicks required is n for n cards on the table)
         // How to reset the game?
+
+
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+        // Used like so
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var colorArray = [];
+
+        var colorObject = [
+            {
+                id: 1,
+                color: "salmon"
+            },
+            {
+                id: 2,
+                color: "seagreen"
+            },
+            {
+                id: 3,
+                color: "sienna"
+            },
+            {
+                id: 4,
+                color: "brown"
+            },
+            {
+                id: 5,
+                color: "tan"
+            },
+            {
+                id: 6,
+                color: "red"
+            },
+            {
+                id: 7,
+                color: "yellow"
+            },
+            {
+                id: 8,
+                color: "purple"
+            },
+            {
+                id: 9,
+                color: "lawngreen"
+            },
+            {
+                id: 10,
+                color: "crimson"
+            }
+        ]
+
+        arr = shuffle(arr);
+
+        for (var i = 0; i < arr.length; i++) {
+            colorArray[i] = colorObject[arr[i] - 1].color;
+        }
+
+        console.log(arr);
+        console.log(colorArray);
 
 
 
@@ -98,7 +180,7 @@
                     truthy: true,
                     falsy: false
                 },
-                colorClass: ["redBg", "greenBg"]
+                colorClass: colorArray
             },
             methods: {
 
