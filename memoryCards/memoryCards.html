@@ -35,7 +35,7 @@
 
         <div class="row">
             <div class="cardContainer">
-                <div v-bind:class="{ card: true }" v-for="card in cardGameArray" v-bind:style="{ 'background-color': card.color }" v-on:click="cardClicked(card.id)">
+                <div v-for="card in cardGameArray" v-bind:style="{ 'background-color': card.color }" v-bind:class="{ card: true, showGray: true }" v-on:click="cardClicked(card.id)">
                 </div>
             </div>
 
