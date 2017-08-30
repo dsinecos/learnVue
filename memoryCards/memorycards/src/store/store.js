@@ -3,6 +3,84 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+var colorArrayData = [
+    {
+        colorID: 1,
+        color: "salmon",
+        image: ""
+    },
+    {
+        colorID: 2,
+        color: "seagreen",
+        image: ""
+    },
+    {
+        colorID: 3,
+        color: "sienna",
+        image: ""
+    },
+    {
+        colorID: 4,
+        color: "brown",
+        image: ""
+    },
+    {
+        colorID: 5,
+        color: "tan",
+        image: ""
+    },
+    {
+        colorID: 6,
+        color: "red",
+        image: ""
+    },
+    {
+        colorID: 7,
+        color: "yellow",
+        image: ""
+    },
+    {
+        colorID: 8,
+        color: "purple",
+        image: ""
+    },
+    {
+        colorID: 9,
+        color: "lawngreen",
+        image: ""
+    },
+    {
+        colorID: 10,
+        color: "crimson",
+        image: ""
+    },
+    {
+        colorID: 11,
+        color: "",
+        image: ""
+    },
+    {
+        colorID: 12,
+        color: "",
+        image: ""
+    },
+    {
+        colorID: 13,
+        color: "",
+        image: ""
+    },
+    {
+        colorID: 14,
+        color: "",
+        image: ""
+    },
+    {
+        colorID: 15,
+        color: "",
+        image: ""
+    }
+];
+
 export const store = new Vuex.Store({
     state: {
         numOfCardsBeginning: 0,
@@ -23,80 +101,3 @@ export const store = new Vuex.Store({
     // 4. getScore - (numOfCardsBeginning - numOfCardsCurrent)
 });
 
-var colorArrayData = [
-    {
-        id: 1,
-        color: "salmon",
-        image: ""
-    },
-    {
-        id: 2,
-        color: "seagreen",
-        image: ""
-    },
-    {
-        id: 3,
-        color: "sienna",
-        image: ""
-    },
-    {
-        id: 4,
-        color: "brown",
-        image: ""
-    },
-    {
-        id: 5,
-        color: "tan",
-        image: ""
-    },
-    {
-        id: 6,
-        color: "red",
-        image: ""
-    },
-    {
-        id: 7,
-        color: "yellow",
-        image: ""
-    },
-    {
-        id: 8,
-        color: "purple",
-        image: ""
-    },
-    {
-        id: 9,
-        color: "lawngreen",
-        image: ""
-    },
-    {
-        id: 10,
-        color: "crimson",
-        image: ""
-    },
-    {
-        id: 11,
-        color: "",
-        image: ""
-    },
-    {
-        id: 12,
-        color: "",
-        image: ""
-    },
-    {
-        id: 13,
-        color: "",
-        image: ""
-    },
-    {
-        id: 14,
-        color: "",
-        image: ""
-    },
-    {
-        id: 15,
-        color: "",
-        image: ""
-    }
-];
