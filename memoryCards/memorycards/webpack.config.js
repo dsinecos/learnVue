@@ -1,13 +1,21 @@
 var path = require('path')
 var webpack = require('webpack')
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    // publicPath: '/dist/',
     filename: 'build.js'
   },
+  // plugins: [
+  //   new CopyWebpackPlugin([{
+  //     from: './*.html'
+  //   }])
+  // ],
+  // plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
       {
@@ -27,9 +35,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
+        options: {}
       }
     ]
   },
